@@ -24,7 +24,7 @@ body {
 }
 header {
     display: flex;
-    background: linear-gradient(90deg, #6A0DAD, #00ddeb);
+    background: linear-gradient(90deg, #6206B3);
     padding: 40px 20px;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
