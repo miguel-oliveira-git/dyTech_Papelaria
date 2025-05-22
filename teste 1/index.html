@@ -128,11 +128,9 @@
   <!-- Navigation Bar -->
   <nav class="bg-purple-900 shadow-lg sticky top-0 z-50">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <!-- Logo Only -->
+      <!-- Logo with PNG -->
       <div class="flex items-center">
-        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-          <i class="fas fa-pen-fancy text-2xl text-purple-900"></i>
-        </div>
+      <img src="assets/logopcp.png" alt="Logo Papelaria Central Parque" class="w-12 h-12 rounded-full object-cover p-1 shadow" />
       </div>
 
       <!-- Mobile Menu Button -->
@@ -189,8 +187,8 @@
   <section id="home" class="hero-section min-h-screen flex items-center justify-center text-white">
     <div class="container mx-auto px-4 text-center animate-fade-in">
       <div
-        class="w-32 h-32 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-8 backdrop-blur-sm">
-        <i class="fas fa-pen-fancy text-5xl text-white"></i>
+        class="w-32 h-32 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-8 backdrop-blur-sm">
+        <img src="assets/logopcp.png" alt="Logo Papelaria Central Parque" class="w-12 h-12 rounded-full object-cover" />
       </div>
       <h1 class="text-4xl md:text-6xl font-bold mb-6">Papelaria Central Parque</h1>
       <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Tudo o que você precisa para estudo, trabalho e criatividade
@@ -572,14 +570,14 @@
           </p>
           <div class="bg-purple-800 border-l-4 border-purple-300 p-4 rounded-r-lg">
             <p class="font-medium">
-              <i class="fas fa-map-marker-alt mr-2"></i> Av. Central Parque, 1234 - Sorocaba/SP
+              <i class="fas fa-map-marker-alt mr-2"></i> Rua José Tótora, 1041 - Jardim Vera Cruz, Sorocaba - SP
             </p>
           </div>
         </div>
         <div class="lg:w-1/2 animate-fade-in">
           <div class="relative overflow-hidden rounded-lg shadow-xl">
             <img
-              src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              src="assets/fachadaNew.jpeg"
               alt="Nossa loja" class="w-full h-auto">
             <div class="absolute inset-0 bg-gradient-to-t from-purple-900 to-transparent opacity-70"></div>
             <div class="absolute bottom-0 left-0 p-6 text-white">
@@ -618,47 +616,18 @@
   <section id="contato" class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold mb-4 text-purple-900">Entre em Contato</h2>
+        <h2 class="text-3xl font-bold mb-4 text-purple-900">Nossa Localização</h2>
         <div class="w-20 h-1 bg-purple-700 mx-auto"></div>
       </div>
-
       <div class="flex flex-col lg:flex-row gap-12">
-        <!-- Contact Form -->
+        <!-- Google Maps Embed -->
         <div class="lg:w-1/2 animate-fade-in">
-          <form id="contact-form" class="bg-purple-50 p-8 rounded-lg shadow-lg">
-            <div class="mb-6">
-              <label for="name" class="block text-gray-700 font-medium mb-2">Nome</label>
-              <input type="text" id="name"
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-700"
-                required>
-            </div>
-
-            <div class="mb-6">
-              <label for="email" class="block text-gray-700 font-medium mb-2">E-mail</label>
-              <input type="email" id="email"
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-700"
-                required>
-            </div>
-
-            <div class="mb-6">
-              <label for="subject" class="block text-gray-700 font-medium mb-2">Assunto</label>
-              <input type="text" id="subject"
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-700"
-                required>
-            </div>
-
-            <div class="mb-6">
-              <label for="message" class="block text-gray-700 font-medium mb-2">Mensagem</label>
-              <textarea id="message" rows="5"
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-700"
-                required></textarea>
-            </div>
-
-            <button type="submit"
-              class="w-full bg-purple-700 hover:bg-purple-600 text-white font-bold py-3 px-4 rounded-lg transition transform hover:scale-105">
-              Enviar Mensagem
-            </button>
-          </form>
+          <div class="rounded-lg overflow-hidden shadow-lg h-full min-h-[350px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2786.663679835816!2d-47.509405225923636!3d-23.518498660016554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c58b3f931fad33%3A0xc4f4188c3874ce37!2sR.%20Jos%C3%A9%20T%C3%B3tora%2C%201041%20-%20Jardim%20Vera%20Cruz%2C%20Sorocaba%20-%20SP%2C%2018051-005!5e1!3m2!1spt-BR!2sbr!4v1739379706195!5m2!1spt-BR!2sbr"
+              width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
         </div>
 
         <!-- Contact Info -->
@@ -673,7 +642,7 @@
                   <div class="w-8 h-8 bg-purple-700 text-white rounded-full flex items-center justify-center mr-3">
                     <i class="fas fa-clock text-sm"></i>
                   </div>
-                  <span>Segunda a Sexta: 08:00 - 18:00</span>
+                  <span>Segunda a Sexta: 09:00 - 18:00</span>
                 </li>
                 <li class="flex items-center">
                   <div class="w-8 h-8 bg-purple-700 text-white rounded-full flex items-center justify-center mr-3">
@@ -696,7 +665,7 @@
                 <div class="w-8 h-8 bg-purple-700 text-white rounded-full flex items-center justify-center mr-3">
                   <i class="fas fa-phone-alt text-sm"></i>
                 </div>
-                <span>(15) 1234-5678</span>
+                <span>(15) 99752-3463</span>
               </div>
             </div>
 
@@ -706,22 +675,22 @@
                 <div class="w-8 h-8 bg-purple-700 text-white rounded-full flex items-center justify-center mr-3">
                   <i class="fas fa-envelope text-sm"></i>
                 </div>
-                <span>contato@papelariacentral.com</span>
+                <span>sac@papelariacentralparque.com.br</span>
               </div>
             </div>
 
             <div>
               <h4 class="text-lg font-semibold mb-4 text-gray-800">Redes Sociais</h4>
               <div class="flex space-x-4">
-                <a href="https://wa.me/5515987654321" target="_blank"
+                <a href="https://api.whatsapp.com/send?phone=551599752-3463" target="_blank"
                   class="social-icon bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition duration-300">
                   <i class="fab fa-whatsapp text-xl"></i>
                 </a>
-                <a href="https://instagram.com/papelariacentral" target="_blank"
+                <a href="https://www.instagram.com/papelariacentralparque/" target="_blank"
                   class="social-icon bg-gradient-to-br from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white p-3 rounded-full transition duration-300">
                   <i class="fab fa-instagram text-xl"></i>
                 </a>
-                <a href="https://facebook.com/papelariacentral" target="_blank"
+                <a href="https://www.facebook.com/profile.php?id=100090863193996" target="_blank"
                   class="social-icon bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition duration-300">
                   <i class="fab fa-facebook-f text-xl"></i>
                 </a>
@@ -739,8 +708,8 @@
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="mb-4 md:mb-0">
           <div class="flex items-center space-x-2">
-            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-              <i class="fas fa-pen-fancy text-xl text-purple-900"></i>
+            <div class="w-10 h-10 rounded-full flex items-center justify-center">
+              <img src="assets/logopcp.png" alt="Logo Papelaria Central Parque" class="w-12 h-12 rounded-full object-cover p-1 shadow" />
             </div>
           </div>
         </div>
@@ -765,7 +734,7 @@
       </div>
 
       <div class="border-t border-purple-800 mt-6 pt-6 text-center text-purple-300">
-        <p>&copy; 2023 Papelaria e Bazar Central Parque. Todos os direitos reservados.</p>
+        <p>&copy; 2025 Papelaria e Bazar Central Parque. Todos os direitos reservados.</p>
       </div>
     </div>
   </footer>
@@ -780,4 +749,5 @@
   <script>
   </script>
 </body>
+
 </html>
