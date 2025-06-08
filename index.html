@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Papelaria Central Parque</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Custom styles */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f9fafb;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJ1cmwoI2dyYWRpZW50KSIgZD0iTTI1NiA4QzExOSA4IDggMTE5IDggMjU2czExMSAyNDggMjQ4IDI0OCAyNDgtMTExIDI0OC0yNDhTMzkzIDggMjU2IDh6IiBvcGFjaXR5PSIwLjA1Ii8+PHBhdGggaWQ9ImdyYWRpZW50IiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIgZD0iTTI1NiA4QzExOSA4IDggMTE5IDggMjU2czExMSAyNDggMjQ4IDI0OCAyNDgtMTExIDI0OC0yNDhTMzkzIDggMjU2IDh6Ii8+PHJhZGlhbEdyYWRpZW50IGlkPSJncmFkaWVudCIgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMjQ4IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNjYzMzk5Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDAwMDAwIi8+PC9yYWRpYWxHcmFkaWVudD48L3N2Zz4=');
+      background-size: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.03;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, rgba(102, 51, 153, 0.9), rgba(0, 0, 0, 0.8)),
+        url('https://images.unsplash.com/photo-1518455022959-bd206c94984d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(102, 51, 153, 0.3);
+    }
+
+    .social-icon {
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      transform: scale(1.1);
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .animate-fade-in-up {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #663399;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #5a2d8a;
+    }
+
+    /* Section divider */
+    .section-divider {
+      position: relative;
+      height: 80px;
+      overflow: hidden;
+    }
+
+    .section-divider svg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body class="relative">
+  <!-- Navigation Bar -->
+  <nav class="bg-purple-900 shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <!-- Logo with PNG -->
+      <div class="flex items-center">
+      <img src="assets/logopcp.png" alt="Logo Papelaria Central Parque" class="w-12 h-12 rounded-full object-cover p-1 shadow" />
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-button" class="md:hidden focus:outline-none text-white">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-8">
+        <a href="#home" class="text-white hover:text-purple-300 transition flex flex-col items-center">
+          <i class="fas fa-home text-xl"></i>
+          <span class="text-xs mt-1">Home</span>
+        </a>
+        <a href="#produtos" class="text-white hover:text-purple-300 transition flex flex-col items-center">
+          <i class="fas fa-shopping-bag text-xl"></i>
+          <span class="text-xs mt-1">Produtos</span>
+        </a>
+        <a href="#servicos" class="text-white hover:text-purple-300 transition flex flex-col items-center">
+          <i class="fas fa-concierge-bell text-xl"></i>
+          <span class="text-xs mt-1">Serviços</span>
+        </a>
+        <a href="#sobre" class="text-white hover:text-purple-300 transition flex flex-col items-center">
+          <i class="fas fa-store text-xl"></i>
+          <span class="text-xs mt-1">Sobre Nós</span>
+        </a>
+        <a href="#contato" class="text-white hover:text-purple-300 transition flex flex-col items-center">
+          <i class="fas fa-envelope text-xl"></i>
+          <span class="text-xs mt-1">Contato</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-purple-800 px-4 py-2">
+      <a href="#home" class="block py-2 text-white hover:text-purple-300 transition flex items-center">
+        <i class="fas fa-home mr-3"></i> Home
+      </a>
+      <a href="#produtos" class="block py-2 text-white hover:text-purple-300 transition flex items-center">
+        <i class="fas fa-shopping-bag mr-3"></i> Produtos
+      </a>
+      <a href="#servicos" class="block py-2 text-white hover:text-purple-300 transition flex items-center">
+        <i class="fas fa-concierge-bell mr-3"></i> Serviços
+      </a>
+      <a href="#sobre" class="block py-2 text-white hover:text-purple-300 transition flex items-center">
+        <i class="fas fa-store mr-3"></i> Sobre Nós
+      </a>
+      <a href="#contato" class="block py-2 text-white hover:text-purple-300 transition flex items-center">
+        <i class="fas fa-envelope mr-3"></i> Contato
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section (Home) -->
+  <section id="home" class="hero-section min-h-screen flex items-center justify-center text-white">
+    <div class="container mx-auto px-4 text-center animate-fade-in">
+      <div
+        class="w-32 h-32 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-8 backdrop-blur-sm">
+        <img src="assets/logopcp.png" alt="Logo Papelaria Central Parque" class="w-12 h-12 rounded-full object-cover" />
+      </div>
+      <h1 class="text-4xl md:text-6xl font-bold mb-6">Papelaria Central Parque</h1>
+      <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Tudo o que você precisa para estudo, trabalho e criatividade
+        em um só lugar!</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#produtos"
+          class="bg-purple-700 hover:bg-purple-600 text-white px-6 py-3 rounded-lg font-medium transition transform hover:scale-105">
+          <i class="fas fa-chevron-down mr-2"></i> Conheça nossos produtos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Divider -->
+  <div class="section-divider bg-white">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path
+        d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+        opacity=".25" fill="#663399"></path>
+      <path
+        d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+        opacity=".5" fill="#663399"></path>
+      <path
+        d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+        fill="#663399"></path>
+    </svg>
+  </div>
+
+  <!-- Products Section -->
+  <section id="produtos" class="py-16 bg-purple-900 text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4">Nossos Produtos</h2>
+        <div class="w-20 h-1 bg-purple-300 mx-auto"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <!-- Product Card 1 -->
+        <div
+          class="card-hover bg-white rounded-lg overflow-hidden shadow-md transition duration-300 animate-fade-in-up">
+          <div class="relative overflow-hidden h-48">
+            <img
+              src="https://images.unsplash.com/photo-1581093450021-5376e921c838?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              alt="Cadernos" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+            <div class="absolute top-2 right-2 bg-purple-700 text-white px-2 py-1 rounded text-xs font-bold">NOVO</div>
+          </div>
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-2 text-purple-900">Cadernos Premium</h3>
+            <p class="text-gray-600 mb-4 text-sm">Cadernos de capa dura com 200 folhas</p>
+            <div class="flex justify-between items-center">
+              <span class="text-lg font-bold text-purple-900">R$ 29,90</span>
+              <button
+                class="bg-purple-700 hover:bg-purple-600 text-white px-4 py-2 rounded-full text-sm transition flex items-center">
+                <i class="fas fa-eye mr-1"></i> Ver
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 2 -->
+        <div
+          class="card-hover bg-white rounded-lg overflow-hidden shadow-md transition duration-300 animate-fade-in-up">
+          <div class="relative overflow-hidden h-48">
+            <img
+              src="https://images.unsplash.com/photo-1511203466129-824e631920d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              alt="Canetas" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+          </div>
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-2 text-purple-900">Kit Canetas Coloridas</h3>
+            <p class="text-gray-600 mb-4 text-sm">Conjunto com 12 cores vibrantes</p>
+            <div class="flex justify-between items-center">
+              <span class="text-lg font-bold text-purple-900">R$ 19,90</span>
+              <button
+                class="bg-purple-700 hover:bg-purple-600 text-white px-4 py-2 rounded-full text-sm transition flex items-center">
+                <i class="fas fa-eye mr-1"></i> Ver
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 3 -->
+        <div
+          class="card-hover bg-white rounded-lg overflow-hidden shadow-md transition duration-300 animate-fade-in-up">
+          <div class="relative overflow-hidden h-48">
+            <img
+              src="https://images.unsplash.com/photo-1560869713-8174f8eae0d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              alt="Mochilas" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+            <div class="absolute top-2 right-2 bg-purple-700 text-white px-2 py-1 rounded text-xs font-bold">MAIS
+              VENDIDO</div>
+          </div>
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-2 text-purple-900">Mochila Escolar</h3>
+            <p class="text-gray-600 mb-4 text-sm">Mochila resistente com vários compartimentos</p>
+            <div class="flex justify-between items-center">
+              <span class="text-lg font-bold text-purple-900">R$ 89,90</span>
+              <button
+                class="bg-purple-700 hover:bg-purple-600 text-white px-4 py-2 rounded-full text-sm transition flex items-center">
+                <i class="fas fa-eye mr-1"></i> Ver
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 4 -->
+        <div
+          class="card-hover bg-white rounded-lg overflow-hidden shadow-md transition duration-300 animate-fade-in-up">
+          <div class="relative overflow-hidden h-48">
+            <img
+              src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              alt="Materiais de Escritório" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+          </div>
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-2 text-purple-900">Kit Escritório</h3>
+            <p class="text-gray-600 mb-4 text-sm">Tudo que você precisa para o trabalho</p>
+            <div class="flex justify-between items-center">
+              <span class="text-lg font-bold text-purple-900">R$ 49,90</span>
+              <button
+                class="bg-purple-700 hover:bg-purple-600 text-white px-4 py-2 rounded-full text-sm transition flex items-center">
+                <i class="fas fa-eye mr-1"></i> Ver
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 5 -->
+        <div
+          class="card-hover bg-white rounded-lg overflow-hidden shadow-md transition duration-300 animate-fade-in-up">
+          <div class="relative overflow-hidden h-48">
+            <img
+              src="https://images.unsplash.com/photo-1549388604-817b15a13da2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              alt="Materiais de Arte" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+          </div>
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-2 text-purple-900">Kit Artista</h3>
+            <p class="text-gray-600 mb-4 text-sm">Materiais profissionais para desenho</p>
+            <div class="flex justify-between items-center">
+              <span class="text-lg font-bold text-purple-900">R$ 79,90</span>
+              <button
+                class="bg-purple-700 hover:bg-purple-600 text-white px-4 py-2 rounded-full text-sm transition flex items-center">
+                <i class="fas fa-eye mr-1"></i> Ver
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 6 -->
+        <div
+          class="card-hover bg-white rounded-lg overflow-hidden shadow-md transition duration-300 animate-fade-in-up">
+          <div class="relative overflow-hidden h-48">
+            <img
+              src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              alt="Organizadores" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+          </div>
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-2 text-purple-900">Organizadores</h3>
+            <p class="text-gray-600 mb-4 text-sm">Materiais para manter tudo em ordem</p>
+            <div class="flex justify-between items-center">
+              <span class="text-lg font-bold text-purple-900">R$ 39,90</span>
+              <button
+                class="bg-purple-700 hover:bg-purple-600 text-white px-4 py-2 rounded-full text-sm transition flex items-center">
+                <i class="fas fa-eye mr-1"></i> Ver
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 7 -->
+        <div
+          class="card-hover bg-white rounded-lg overflow-hidden shadow-md transition duration-300 animate-fade-in-up">
+          <div class="relative overflow-hidden h-48">
+            <img
+              src="https://images.unsplash.com/photo-1518455022959-bd206c94984d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              alt="Papéis" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+          </div>
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-2 text-purple-900">Papéis Variados</h3>
+            <p class="text-gray-600 mb-4 text-sm">Diversos tipos e gramaturas</p>
+            <div class="flex justify-between items-center">
+              <span class="text-lg font-bold text-purple-900">R$ 9,90</span>
+              <button
+                class="bg-purple-700 hover:bg-purple-600 text-white px-4 py-2 rounded-full text-sm transition flex items-center">
+                <i class="fas fa-eye mr-1"></i> Ver
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Card 8 -->
+        <div
+          class="card-hover bg-white rounded-lg overflow-hidden shadow-md transition duration-300 animate-fade-in-up">
+          <div class="relative overflow-hidden h-48">
+            <img
+              src="https://images.unsplash.com/photo-1629196913083-6a0c8d5cb5e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              alt="Presentes" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+            <div class="absolute top-2 right-2 bg-purple-700 text-white px-2 py-1 rounded text-xs font-bold">PROMOÇÃO
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="text-xl font-semibold mb-2 text-purple-900">Kits de Presente</h3>
+            <p class="text-gray-600 mb-4 text-sm">Presentes criativos para todas as ocasiões</p>
+            <div class="flex justify-between items-center">
+              <span class="text-lg font-bold text-purple-900 line-through mr-2">R$ 79,90</span>
+              <span class="text-lg font-bold text-purple-900">R$ 59,90</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="#servicos"
+          class="inline-block bg-white hover:bg-gray-100 text-purple-900 px-6 py-3 rounded-lg font-medium transition transform hover:scale-105">
+          <i class="fas fa-chevron-down mr-2"></i> Conheça nossos serviços
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Divider -->
+  <div class="section-divider bg-purple-900">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path
+        d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+        opacity=".25" fill="#ffffff"></path>
+      <path
+        d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+        opacity=".5" fill="#ffffff"></path>
+      <path
+        d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+        fill="#ffffff"></path>
+    </svg>
+  </div>
+
+  <!-- Services Section -->
+  <section id="servicos" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4 text-purple-900">Nossos Serviços</h2>
+        <div class="w-20 h-1 bg-purple-700 mx-auto"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Service Card 1 -->
+        <div
+          class="card-hover bg-purple-50 rounded-lg overflow-hidden shadow-md p-6 transition duration-300 animate-fade-in-up">
+          <div class="text-purple-700 mb-4 flex justify-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+              <i class="fas fa-print text-2xl"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-center text-purple-900">Impressão Digital</h3>
+          <p class="text-gray-600 mb-4 text-center">Impressão colorida e preto e branco em diversos tipos de papel e
+            formatos.</p>
+          <div class="flex justify-center">
+            <span class="text-lg font-bold text-purple-900">A partir de R$ 0,50</span>
+          </div>
+        </div>
+
+        <!-- Service Card 2 -->
+        <div
+          class="card-hover bg-purple-50 rounded-lg overflow-hidden shadow-md p-6 transition duration-300 animate-fade-in-up">
+          <div class="text-purple-700 mb-4 flex justify-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+              <i class="fas fa-book text-2xl"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-center text-purple-900">Encadernação</h3>
+          <p class="text-gray-600 mb-4 text-center">Encadernação profissional de trabalhos, TCCs, monografias e muito
+            mais.</p>
+          <div class="flex justify-center">
+            <span class="text-lg font-bold text-purple-900">A partir de R$ 15,00</span>
+          </div>
+        </div>
+
+        <!-- Service Card 3 -->
+        <div
+          class="card-hover bg-purple-50 rounded-lg overflow-hidden shadow-md p-6 transition duration-300 animate-fade-in-up">
+          <div class="text-purple-700 mb-4 flex justify-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+              <i class="fas fa-id-card text-2xl"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-center text-purple-900">Plastificação</h3>
+          <p class="text-gray-600 mb-4 text-center">Proteja seus documentos importantes com nosso serviço de
+            plastificação.</p>
+          <div class="flex justify-center">
+            <span class="text-lg font-bold text-purple-900">A partir de R$ 2,00</span>
+          </div>
+        </div>
+
+        <!-- Service Card 4 -->
+        <div
+          class="card-hover bg-purple-50 rounded-lg overflow-hidden shadow-md p-6 transition duration-300 animate-fade-in-up">
+          <div class="text-purple-700 mb-4 flex justify-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+              <i class="fas fa-copy text-2xl"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-center text-purple-900">Xerox</h3>
+          <p class="text-gray-600 mb-4 text-center">Cópias rápidas e de qualidade em preto e branco ou coloridas.</p>
+          <div class="flex justify-center">
+            <span class="text-lg font-bold text-purple-900">A partir de R$ 0,30</span>
+          </div>
+        </div>
+
+        <!-- Service Card 5 -->
+        <div
+          class="card-hover bg-purple-50 rounded-lg overflow-hidden shadow-md p-6 transition duration-300 animate-fade-in-up">
+          <div class="text-purple-700 mb-4 flex justify-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+              <i class="fas fa-stamp text-2xl"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-center text-purple-900">Carimbos Personalizados</h3>
+          <p class="text-gray-600 mb-4 text-center">Faça seu carimbo personalizado com rapidez e qualidade.</p>
+          <div class="flex justify-center">
+            <span class="text-lg font-bold text-purple-900">A partir de R$ 25,00</span>
+          </div>
+        </div>
+
+        <!-- Service Card 6 -->
+        <div
+          class="card-hover bg-purple-50 rounded-lg overflow-hidden shadow-md p-6 transition duration-300 animate-fade-in-up">
+          <div class="text-purple-700 mb-4 flex justify-center">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center">
+              <i class="fas fa-scroll text-2xl"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-center text-purple-900">Banner e Adesivos</h3>
+          <p class="text-gray-600 mb-4 text-center">Criação e impressão de banners, adesivos e materiais promocionais.
+          </p>
+          <div class="flex justify-center">
+            <span class="text-lg font-bold text-purple-900">Sob consulta</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="#sobre"
+          class="inline-block bg-purple-900 hover:bg-purple-800 text-white px-6 py-3 rounded-lg font-medium transition transform hover:scale-105">
+          <i class="fas fa-chevron-down mr-2"></i> Conheça nossa história
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Divider -->
+  <div class="section-divider bg-white">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path
+        d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+        opacity=".25" fill="#663399"></path>
+      <path
+        d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+        opacity=".5" fill="#663399"></path>
+      <path
+        d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+        fill="#663399"></path>
+    </svg>
+  </div>
+
+  <!-- About Us Section -->
+  <section id="sobre" class="py-16 bg-purple-900 text-white">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col lg:flex-row items-center">
+        <div class="lg:w-1/2 mb-8 lg:mb-0 lg:pr-12 animate-fade-in">
+          <h2 class="text-3xl font-bold mb-6">Sobre Nós</h2>
+          <p class="mb-4 text-purple-100">
+            Fundada em 2010, a <span class="font-bold">Papelaria e Bazar Central Parque</span> nasceu com o propósito de
+            oferecer produtos de qualidade e serviços especializados para atender às necessidades de estudantes,
+            profissionais e criativos do bairro Central Parque em Sorocaba.
+          </p>
+          <p class="mb-4 text-purple-100">
+            Ao longo de mais de uma década, nos tornamos referência na região, combinando tradição com inovação para
+            oferecer sempre o melhor aos nossos clientes.
+          </p>
+          <p class="mb-6 text-purple-100">
+            Nossa missão é facilitar a vida das pessoas, fornecendo materiais escolares, de escritório, presentes e
+            serviços gráficos com excelência e atendimento personalizado.
+          </p>
+          <div class="bg-purple-800 border-l-4 border-purple-300 p-4 rounded-r-lg">
+            <p class="font-medium">
+              <i class="fas fa-map-marker-alt mr-2"></i> Rua José Tótora, 1041 - Jardim Vera Cruz, Sorocaba - SP
+            </p>
+          </div>
+        </div>
+        <div class="lg:w-1/2 animate-fade-in">
+          <div class="relative overflow-hidden rounded-lg shadow-xl">
+            <img
+              src="assets/fachadaNew.jpeg"
+              alt="Nossa loja" class="w-full h-auto">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-900 to-transparent opacity-70"></div>
+            <div class="absolute bottom-0 left-0 p-6 text-white">
+              <h3 class="text-xl font-bold">Visite nossa loja!</h3>
+              <p>Estamos abertos de segunda a sábado</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="#contato"
+          class="inline-block bg-white hover:bg-gray-100 text-purple-900 px-6 py-3 rounded-lg font-medium transition transform hover:scale-105">
+          <i class="fas fa-chevron-down mr-2"></i> Entre em contato conosco
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Divider -->
+  <div class="section-divider bg-purple-900">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path
+        d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+        opacity=".25" fill="#ffffff"></path>
+      <path
+        d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+        opacity=".5" fill="#ffffff"></path>
+      <path
+        d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+        fill="#ffffff"></path>
+    </svg>
+  </div>
+
+  <!-- Contact Section -->
+  <section id="contato" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4 text-purple-900">Nossa Localização</h2>
+        <div class="w-20 h-1 bg-purple-700 mx-auto"></div>
+      </div>
+      <div class="flex flex-col lg:flex-row gap-12">
+        <!-- Google Maps Embed -->
+        <div class="lg:w-1/2 animate-fade-in">
+          <div class="rounded-lg overflow-hidden shadow-lg h-full min-h-[350px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2786.663679835816!2d-47.509405225923636!3d-23.518498660016554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c58b3f931fad33%3A0xc4f4188c3874ce37!2sR.%20Jos%C3%A9%20T%C3%B3tora%2C%201041%20-%20Jardim%20Vera%20Cruz%2C%20Sorocaba%20-%20SP%2C%2018051-005!5e1!3m2!1spt-BR!2sbr!4v1739379706195!5m2!1spt-BR!2sbr"
+              width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="lg:w-1/2 animate-fade-in">
+          <div class="bg-purple-50 p-8 rounded-lg shadow-lg h-full">
+            <h3 class="text-2xl font-bold mb-6 text-purple-900">Informações de Contato</h3>
+
+            <div class="mb-8">
+              <h4 class="text-lg font-semibold mb-4 text-gray-800">Horário de Funcionamento</h4>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <div class="w-8 h-8 bg-purple-700 text-white rounded-full flex items-center justify-center mr-3">
+                    <i class="fas fa-clock text-sm"></i>
+                  </div>
+                  <span>Segunda a Sexta: 09:00 - 18:00</span>
+                </li>
+                <li class="flex items-center">
+                  <div class="w-8 h-8 bg-purple-700 text-white rounded-full flex items-center justify-center mr-3">
+                    <i class="fas fa-clock text-sm"></i>
+                  </div>
+                  <span>Sábado: 09:00 - 13:00</span>
+                </li>
+                <li class="flex items-center">
+                  <div class="w-8 h-8 bg-purple-700 text-white rounded-full flex items-center justify-center mr-3">
+                    <i class="fas fa-clock text-sm"></i>
+                  </div>
+                  <span>Domingo: Fechado</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="text-lg font-semibold mb-4 text-gray-800">Telefone</h4>
+              <div class="flex items-center">
+                <div class="w-8 h-8 bg-purple-700 text-white rounded-full flex items-center justify-center mr-3">
+                  <i class="fas fa-phone-alt text-sm"></i>
+                </div>
+                <span>(15) 99752-3463</span>
+              </div>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="text-lg font-semibold mb-4 text-gray-800">E-mail</h4>
+              <div class="flex items-center">
+                <div class="w-8 h-8 bg-purple-700 text-white rounded-full flex items-center justify-center mr-3">
+                  <i class="fas fa-envelope text-sm"></i>
+                </div>
+                <span>sac@papelariacentralparque.com.br</span>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="text-lg font-semibold mb-4 text-gray-800">Redes Sociais</h4>
+              <div class="flex space-x-4">
+                <a href="https://api.whatsapp.com/send?phone=551599752-3463" target="_blank"
+                  class="social-icon bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition duration-300">
+                  <i class="fab fa-whatsapp text-xl"></i>
+                </a>
+                <a href="https://www.instagram.com/papelariacentralparque/" target="_blank"
+                  class="social-icon bg-gradient-to-br from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white p-3 rounded-full transition duration-300">
+                  <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=100090863193996" target="_blank"
+                  class="social-icon bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition duration-300">
+                  <i class="fab fa-facebook-f text-xl"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-purple-900 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <div class="flex items-center space-x-2">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center">
+              <img src="assets/logopcp.png" alt="Logo Papelaria Central Parque" class="w-12 h-12 rounded-full object-cover p-1 shadow" />
+            </div>
+          </div>
+        </div>
+
+        <div class="flex space-x-6 mb-4 md:mb-0">
+          <a href="#home" class="hover:text-purple-300 transition">
+            <i class="fas fa-home"></i>
+          </a>
+          <a href="#produtos" class="hover:text-purple-300 transition">
+            <i class="fas fa-shopping-bag"></i>
+          </a>
+          <a href="#servicos" class="hover:text-purple-300 transition">
+            <i class="fas fa-concierge-bell"></i>
+          </a>
+          <a href="#sobre" class="hover:text-purple-300 transition">
+            <i class="fas fa-store"></i>
+          </a>
+          <a href="#contato" class="hover:text-purple-300 transition">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="border-t border-purple-800 mt-6 pt-6 text-center text-purple-300">
+        <p>&copy; 2025 Papelaria e Bazar Central Parque. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top"
+    class="fixed bottom-6 right-6 bg-purple-700 hover:bg-purple-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+  </script>
+</body>
+
+</html>
